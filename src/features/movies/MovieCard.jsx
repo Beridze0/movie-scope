@@ -6,7 +6,7 @@ import Button from "../../ui/Button";
 export default function MovieCard() {
   return (
     <div>
-      <div className="relative w-[280px] h-[220px]">
+      <div className="relative w-[255px] h-[220px]">
         <img src={temp} className="h-full object-cover" />
         <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/60 to-transparent">
           <h1 className="text-white font-bold ">The Chernobyl</h1>

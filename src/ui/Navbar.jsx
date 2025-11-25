@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="flex justify-between items-center px-24 gap-24  py-2">
+    <nav className="flex justify-between items-center px-24 gap-24 mt-5 py-2">
       <div className="flex items-center justify-between flex-2">
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `text-2xl font-semibold pb-3 ${
+            `text-xl font-semibold pb-3 ${
               isActive ? "text-[#00B9AE] border-b-2  border-b-[#00B9AE]" : ""
             }`
           }
@@ -19,7 +19,7 @@ export default function Navbar() {
         <NavLink
           to="tv"
           className={({ isActive }) =>
-            `text-2xl font-semibold pb-3 ${
+            `text-xl font-semibold pb-3 ${
               isActive ? "text-[#00B9AE] border-b-2  border-b-[#00B9AE]" : ""
             }`
           }
@@ -29,7 +29,7 @@ export default function Navbar() {
         <NavLink
           to="anime"
           className={({ isActive }) =>
-            `text-2xl font-semibold pb-3 ${
+            `text-xl font-semibold pb-3 ${
               isActive ? "text-[#00B9AE] border-b-2  border-b-[#00B9AE]" : ""
             }`
           }
