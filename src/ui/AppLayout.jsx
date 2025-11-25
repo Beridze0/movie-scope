@@ -6,9 +6,9 @@ import RightSidebar from "./RightSidebar";
 
 export default function AppLayout() {
   return (
-    <div className="flex  justify-between  h-screen">
+    <div className="flex justify-between h-screen">
       <LeftSidebar />
-      <div>
+      <div className="flex flex-col flex-4 text-white bg-[#16181E]">
         <Navbar />
         <Outlet />
       </div>

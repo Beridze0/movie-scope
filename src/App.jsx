@@ -1,8 +1,8 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import FavoritesPage from "./features/movies/FavoritesPage";
 import MovieDetails from "./features/movies/MovieDetails";
 import MoviesPage from "./features/movies/MoviesPage";
+import Watchlist from "./features/watchlist/Watchlist";
 import AppLayout from "./ui/AppLayout";
 import NotFound from "./ui/NotFound";
 
@@ -20,8 +20,8 @@ const router = createBrowserRouter([
         path: "movie/:movieId",
       },
       {
-        element: <FavoritesPage />,
-        path: "favorites",
+        element: <Watchlist />,
+        path: "watchlist",
       },
     ],
   },

@@ -48,11 +48,11 @@ const sidebarSections = [
 
 export default function LeftSidebar() {
   return (
-    <div className="h-full flex flex-col w-52 bg-[#21242D] pl-5 py-2">
+    <div className="h-full flex flex-1 flex-col w-52 bg-[#21242D] pl-5 py-2">
       <Logo />
       <div className="h-full flex flex-col justify-between w-full mt-6">
         {sidebarSections.map((section) => (
-          <div className="w-full">
+          <div key={section.title} className="w-full">
             <h3 className="text-gray-300 text-[0.93rem] mb-2">
               {section.title}
             </h3>
@@ -60,6 +60,7 @@ export default function LeftSidebar() {
               {section.items.map((item) => (
                 <NavLink
                   to={item.path}
+                  key={item.label}
                   className={({ isActive }) =>
                     `flex items-center gap-1.5  py-[0.53rem] ${
                       isActive
