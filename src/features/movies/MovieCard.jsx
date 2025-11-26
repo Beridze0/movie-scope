@@ -1,11 +1,18 @@
 import React from "react";
 import { BiStar } from "react-icons/bi";
 import Button from "../../ui/Button";
+import { Link } from "react-router-dom";
 
 export default function MovieCard({ movie }) {
-  const { title, vote_average: _rating, poster_path: img, _genre_ids } = movie;
+  const {
+    id,
+    title,
+    vote_average: _rating,
+    poster_path: img,
+    _genre_ids,
+  } = movie;
   return (
-    <div>
+    <Link to={`/movie/${id}`}>
       <div className="relative w-[280px] h-[240px]">
         <img
           src={`https://image.tmdb.org/t/p/w500${img}`}
@@ -25,6 +32,6 @@ export default function MovieCard({ movie }) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
