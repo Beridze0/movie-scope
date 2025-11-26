@@ -1,7 +1,7 @@
 import React from "react";
-import { BASE_URL, TMDB_OPTIONS } from "../../utils/api";
-import { useLoaderData } from "react-router-dom";
 import { BiStar } from "react-icons/bi";
+import { useLoaderData } from "react-router-dom";
+import { BASE_URL, TMDB_OPTIONS } from "../../utils/api";
 
 const TMDB_ACCESS_TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
 
@@ -24,6 +24,14 @@ export default function MovieDetails() {
     production_companies,
     status,
   } = data;
+
+  if (!data) {
+    return (
+      <div className="flex items-center justify-center h-screen text-white bg-[#16181E]">
+        Loading...
+      </div>
+    );
+  }
 
   return (
     <div className="w-full min-h-screen text-white bg-[#16181E]">

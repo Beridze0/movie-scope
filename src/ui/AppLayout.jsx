@@ -6,15 +6,22 @@ import RightSidebar from "./RightSidebar";
 
 export default function AppLayout() {
   return (
-    <div className="flex justify-between min-h-screen shrink-0">
-      <div className="w-52">
+    <div className="flex min-h-screen bg-[#16181E] text-white">
+      <div className="w-52 shrink-0 h-screen">
         <LeftSidebar />
       </div>
-      <div className="flex flex-col flex-1 text-white bg-[#16181E]">
-        <Navbar />
-        <Outlet />
+
+      <div className="flex-1 flex flex-col h-screen overflow-hidden">
+        <div className="shrink-0">
+          <Navbar />
+        </div>
+
+        <div className="flex-1 overflow-y-auto">
+          <Outlet />
+        </div>
       </div>
-      <div className="w-80">
+
+      <div className="w-80 shrink-0 h-screen hidden lg:flex">
         <RightSidebar />
       </div>
     </div>

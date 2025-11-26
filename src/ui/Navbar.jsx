@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="flex justify-between items-center px-24 gap-24 mt-5 py-2">
+    <nav className="flex justify-between items-center px-24 gap-24 mt-3 py-2">
       <div className="flex items-center justify-between flex-2">
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `text-xl font-semibold pb-3 ${
+            `text-xl hover:text-[#00B9AE] hover:border-b-2 hover:border-b-[#00B9AE] font-semibold pb-3 ${
               isActive ? "text-[#00B9AE] border-b-2  border-b-[#00B9AE]" : ""
             }`
           }
@@ -19,7 +19,7 @@ export default function Navbar() {
         <NavLink
           to="tv"
           className={({ isActive }) =>
-            `text-xl font-semibold pb-3 ${
+            `text-xl hover:text-[#00B9AE] hover:border-b-2 hover:border-b-[#00B9AE] font-semibold pb-3 ${
               isActive ? "text-[#00B9AE] border-b-2  border-b-[#00B9AE]" : ""
             }`
           }
@@ -29,7 +29,7 @@ export default function Navbar() {
         <NavLink
           to="anime"
           className={({ isActive }) =>
-            `text-xl font-semibold pb-3 ${
+            `text-xl hover:text-[#00B9AE] hover:border-b-2 hover:border-b-[#00B9AE] font-semibold pb-3 ${
               isActive ? "text-[#00B9AE] border-b-2  border-b-[#00B9AE]" : ""
             }`
           }
@@ -38,7 +38,7 @@ export default function Navbar() {
         </NavLink>
       </div>
 
-      <div className="flex items-center gap-3 rounded-lg  px-5  shadow py-2.5 bg-[#21242D] flex-1">
+      <div className="flex items-center gap-3 rounded-lg  px-5 mb-2 shadow py-2.5 bg-[#21242D] flex-1">
         <FaMagnifyingGlass />
         <input placeholder="Search movie" className="outline-none" />
       </div>
