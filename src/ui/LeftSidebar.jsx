@@ -48,7 +48,7 @@ const sidebarSections = [
 
 export default function LeftSidebar() {
   return (
-    <div className="h-full flex flex-1 flex-col w-52 bg-[#21242D] pl-5 py-2">
+    <div className="flex flex-1 shrink-0  flex-col  bg-[#21242D] w-full h-full  pl-5 py-2">
       <Logo />
       <div className="h-full flex flex-col justify-between w-full mt-6">
         {sidebarSections.map((section) => (
