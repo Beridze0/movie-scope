@@ -9,6 +9,9 @@ import MoviesPage, {
 import Watchlist from "./features/watchlist/Watchlist";
 import AppLayout from "./ui/AppLayout";
 import NotFound from "./ui/NotFound";
+import SearchedMovies, {
+  loader as SearchedMoviesLoader,
+} from "./features/movies/SearchedMovies";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +27,11 @@ const router = createBrowserRouter([
         element: <MovieDetails />,
         path: "movie/:movieId",
         loader: MovieDetailsLoader,
+      },
+      {
+        element: <SearchedMovies />,
+        path: "search",
+        loader: SearchedMoviesLoader,
       },
       {
         element: <Watchlist />,

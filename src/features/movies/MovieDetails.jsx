@@ -10,6 +10,8 @@ const BACKDROP_BASE = "https://image.tmdb.org/t/p/original";
 
 export default function MovieDetails() {
   const data = useLoaderData();
+  const { details, videos } = data;
+
   const {
     title,
     poster_path,
@@ -23,9 +25,13 @@ export default function MovieDetails() {
     tagline,
     production_companies,
     status,
-  } = data;
+  } = details;
 
-  if (!data) {
+  const trailer = videos.find(
+    (v) => v.type === "Trailer" && v.site === "YouTube"
+  );
+
+  if (!details) {
     return (
       <div className="flex items-center justify-center h-screen text-white bg-[#16181E]">
         Loading...
@@ -55,7 +61,7 @@ export default function MovieDetails() {
             <div className="flex items-center gap-2">
               <BiStar className="text-yellow-400" />
               <span>
-                {vote_average.toFixed(1)} / 10 ({vote_count} votes)
+                {vote_average?.toFixed()} / 10 ({vote_count} votes)
               </span>
             </div>
             <p className="text-sm text-gray-400">
@@ -101,25 +107,70 @@ export default function MovieDetails() {
           </div>
         )}
       </div>
+
+      {/* VIDEOS (added at the bottom) */}
+      {trailer && (
+        <div className="px-10 py-8">
+          <h2 className="text-2xl font-semibold mb-4">Trailer</h2>
+          <div className="w-full aspect-video">
+            <iframe
+              src={`https://www.youtube.com/embed/${trailer.key}`}
+              title={trailer.name}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full rounded-lg shadow-lg"
+            ></iframe>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
+// export async function loader({ params }) {
+//   const { movieId } = params;
+//   try {
+//     const res = await fetch(
+//       `${BASE_URL}/movie/${movieId}?language=en-US`,
+//       TMDB_OPTIONS
+//     );
+//     if (!res.ok)
+//       throw new Error("Something went wrong this fetching movie details");
+
+//     const data = await res.json();
+//     if (data.Response === "False") throw new Error("Movie details not found");
+
+//     return data;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
+
 export async function loader({ params }) {
   const { movieId } = params;
+
   try {
-    const res = await fetch(
-      `${BASE_URL}/movie/${movieId}?language=en-US`,
-      TMDB_OPTIONS
-    );
-    if (!res.ok)
-      throw new Error("Something went wrong this fetching movie details");
+    const [detailsResult, videosResult] = await Promise.allSettled([
+      fetch(`${BASE_URL}/movie/${movieId}?language=en-US`, TMDB_OPTIONS),
+      fetch(`${BASE_URL}/movie/${movieId}/videos?language=en-US`, TMDB_OPTIONS),
+    ]);
 
-    const data = await res.json();
-    if (data.Response === "False") throw new Error("Movie details not found");
+    const details =
+      detailsResult.status === "fulfilled"
+        ? await detailsResult.value.json()
+        : null;
 
-    return data;
+    const videos =
+      videosResult.status === "fulfilled"
+        ? (await videosResult.value.json()).results
+        : [];
+
+    if (!details) throw new Error("Failed to load movie details");
+
+    return { details, videos };
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }

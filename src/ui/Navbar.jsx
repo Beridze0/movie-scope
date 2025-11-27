@@ -1,6 +1,7 @@
 import React from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
+import Search from "./Search";
 
 export default function Navbar() {
   return (
@@ -37,11 +38,7 @@ export default function Navbar() {
           Anime
         </NavLink>
       </div>
-
-      <div className="flex items-center gap-3 rounded-lg  px-5 mb-2 shadow py-2.5 bg-[#21242D] flex-1">
-        <FaMagnifyingGlass />
-        <input placeholder="Search movie" className="outline-none" />
-      </div>
+      <Search />
     </nav>
   );
 }
