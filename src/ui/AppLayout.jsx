@@ -1,10 +1,12 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
 import LeftSidebar from "./LeftSidebar";
 import Navbar from "./Navbar";
 import RightSidebar from "./RightSidebar";
 
 export default function AppLayout() {
+  const navigation = useNavigation();
+
   return (
     <div className="flex min-h-screen bg-[#16181E] text-white">
       <div className="w-52 shrink-0 h-screen">
@@ -17,7 +19,7 @@ export default function AppLayout() {
         </div>
 
         <div className="flex-1 overflow-y-auto">
-          <Outlet />
+          {navigation.state === "loading" ? <p>LOADING...</p> : <Outlet />}
         </div>
       </div>
 

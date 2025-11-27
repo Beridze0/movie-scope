@@ -37,11 +37,11 @@ const router = createBrowserRouter([
         element: <Watchlist />,
         path: "watchlist",
       },
+      {
+        element: <NotFound />,
+        path: "*",
+      },
     ],
-  },
-  {
-    element: <NotFound />,
-    path: "*",
   },
 ]);
 

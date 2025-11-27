@@ -76,10 +76,28 @@ export default function MovieDetails() {
         </div>
       </div>
 
+      {/* VIDEOS (added at the bottom) */}
+
       {/* OVERVIEW & PRODUCTION */}
       <div className="px-10 py-8 flex flex-col gap-6">
         <h2 className="text-2xl font-semibold">Overview</h2>
         <p className="text-gray-300 max-w-3xl">{overview}</p>
+
+        {trailer && (
+          <div className="px-10 py-8">
+            <h2 className="text-2xl font-semibold mb-4">Trailer</h2>
+            <div className="w-full aspect-video">
+              <iframe
+                src={`https://www.youtube.com/embed/${trailer.key}`}
+                title={trailer.name}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full rounded-lg shadow-lg"
+              ></iframe>
+            </div>
+          </div>
+        )}
 
         {production_companies?.length > 0 && (
           <div>
@@ -107,23 +125,6 @@ export default function MovieDetails() {
           </div>
         )}
       </div>
-
-      {/* VIDEOS (added at the bottom) */}
-      {trailer && (
-        <div className="px-10 py-8">
-          <h2 className="text-2xl font-semibold mb-4">Trailer</h2>
-          <div className="w-full aspect-video">
-            <iframe
-              src={`https://www.youtube.com/embed/${trailer.key}`}
-              title={trailer.name}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full rounded-lg shadow-lg"
-            ></iframe>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

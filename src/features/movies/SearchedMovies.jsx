@@ -1,10 +1,15 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import MovieCard from "./MovieCard";
 import { BASE_URL, TMDB_OPTIONS } from "../../utils/api";
 
 export default function SearchedMovies() {
   const movies = useLoaderData();
+  const navigation = useNavigation();
+
+  if (navigation.state === "loading") {
+    return <div className="text-center mt-10 text-gray-400">Loading...</div>;
+  }
 
   if (!movies || movies.length === 0) {
     return <p className="text-center mt-10 text-gray-400">No movies found.</p>;
