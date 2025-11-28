@@ -3,6 +3,7 @@ import { Outlet, useNavigation } from "react-router-dom";
 import LeftSidebar from "./LeftSidebar";
 import Navbar from "./Navbar";
 import RightSidebar from "./RightSidebar";
+import Loader from "./Loader";
 
 export default function AppLayout() {
   const navigation = useNavigation();
@@ -19,7 +20,7 @@ export default function AppLayout() {
         </div>
 
         <div className="flex-1 overflow-y-auto">
-          {navigation.state === "loading" ? <p>LOADING...</p> : <Outlet />}
+          {navigation.state === "loading" ? <Loader /> : <Outlet />}
         </div>
       </div>
 

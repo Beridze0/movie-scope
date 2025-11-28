@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Button({ children, type }) {
+export default function Button({ children, type, onClick }) {
   if (type === "green")
     return (
       <button className="px-4 py-2 bg-teal-500 text-white rounded cursor-pointer hover:scale-105 transition-all">
@@ -9,7 +9,10 @@ export default function Button({ children, type }) {
     );
   if (type === "small")
     return (
-      <button className="px-4 py-2 text-sm flex items-center bg-white/20 backdrop-blur text-white rounded cursor-pointer hover:scale-105  transition-all">
+      <button
+        className="px-4 py-2 text-sm flex items-center bg-white/20 backdrop-blur text-white rounded cursor-pointer hover:scale-105  transition-all"
+        onClick={onClick}
+      >
         <span>{children}</span>
       </button>
     );
@@ -21,7 +24,10 @@ export default function Button({ children, type }) {
     );
 
   return (
-    <button className="px-4 py-2 bg-white/20 backdrop-blur text-white rounded cursor-pointer hover:scale-105 transition-all">
+    <button
+      className="px-4 py-2 bg-white/20 backdrop-blur text-white rounded cursor-pointer hover:scale-105 transition-all"
+      onClick={onClick}
+    >
       {children}
     </button>
   );

@@ -129,25 +129,6 @@ export default function MovieDetails() {
   );
 }
 
-// export async function loader({ params }) {
-//   const { movieId } = params;
-//   try {
-//     const res = await fetch(
-//       `${BASE_URL}/movie/${movieId}?language=en-US`,
-//       TMDB_OPTIONS
-//     );
-//     if (!res.ok)
-//       throw new Error("Something went wrong this fetching movie details");
-
-//     const data = await res.json();
-//     if (data.Response === "False") throw new Error("Movie details not found");
-
-//     return data;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
-
 export async function loader({ params }) {
   const { movieId } = params;
 
