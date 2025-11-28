@@ -7,4 +7,9 @@ const store = configureStore({
   },
 });
 
+store.subscribe(() => {
+  const state = store.getState();
+  localStorage.setItem("watchlist", JSON.stringify(state.watchlist.items));
+});
+
 export default store;
