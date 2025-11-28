@@ -1,7 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../../ui/Button";
-import { useDispatch } from "react-redux";
 import { addMovie } from "../watchlist/watchlistSlice";
 
 export default function MovieCard({ movie }) {

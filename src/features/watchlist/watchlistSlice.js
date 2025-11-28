@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: [],
+  items: JSON.parse(localStorage.getItem("watchlist")) || [],
 };
 
 const watchlistSlice = createSlice({
@@ -12,7 +12,7 @@ const watchlistSlice = createSlice({
       state.items.push(action.payload);
     },
     removeMovie(state, action) {
-      state.items.filter((item) => item.id === action.payload);
+      state.items = state.items.filter((item) => item.id !== action.payload);
     },
   },
 });
