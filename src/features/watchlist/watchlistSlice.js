@@ -9,6 +9,10 @@ const watchlistSlice = createSlice({
   initialState,
   reducers: {
     addMovie(state, action) {
+      const isInWatchlist = state.items.some(
+        (item) => item.id === action.payload.id
+      );
+      if (isInWatchlist) return;
       state.items.push(action.payload);
     },
     removeMovie(state, action) {
